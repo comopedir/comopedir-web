@@ -52,5 +52,16 @@ module.exports = {
         bucketName: "site.naodeixefecharaconta.com",
       },
     },
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        // This type will contain remote schema Query type
+        typeName: "ComoPedir",
+        // This is the field under which it's accessible
+        fieldName: "comopedir",
+        // URL to query from
+        url: process.env.API_URL,
+      },
+    },
   ],
 }
