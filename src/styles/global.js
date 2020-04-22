@@ -1,6 +1,21 @@
 import { createGlobalStyle } from "styled-components"
+import { fontFiles } from "./fonts"
 
 export const GlobalStyle = createGlobalStyle`
+@font-face {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: normal;
+  src: url(${fontFiles.circularNormalOTF}) format("otf");
+};
+
+@font-face {
+  font-family: "Circular Std";
+  font-style: italic;
+  font-weight: normal;
+  src: url(${fontFiles.circularNormalItalicOTF}) format("otf");
+};
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -28,6 +43,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+  font-family: "Circular Std", "Helvetica";
 }
 ol, ul {
 	list-style: none;
