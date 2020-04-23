@@ -32,7 +32,6 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
 }
@@ -41,9 +40,13 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+html {
+  font-size: 62.5%; /* 1 rem = 10px; 10px/16px = 62.5% */
+}
 body {
 	line-height: 1;
   font-family: "Circular Std", "Helvetica";
+	font-size: 1.6rem; /* resets default font-size to 16px (and scales what user defines in browser settings) */
 }
 ol, ul {
 	list-style: none;
