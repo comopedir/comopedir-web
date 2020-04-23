@@ -39,9 +39,13 @@ const getStyledTag = tag => styled[tag]`
   }
 `
 
-const Text = ({ tag = "p", classname, size = sizes.medium, children }) => {
+const Text = ({ tag = "p", className, size = sizes.medium, children }) => {
   const StyledTag = getStyledTag(tag)
-  return <StyledTag size={size}>{children}</StyledTag>
+  return (
+    <StyledTag className={className} size={size}>
+      {children}
+    </StyledTag>
+  )
 }
 
 export default Text
