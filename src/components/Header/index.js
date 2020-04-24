@@ -28,14 +28,11 @@ const StyledIcon = styled.img`
   margin-left: 1.6rem;
   width: 2rem;
   height: 2rem;
-  color: ${black};
 `
 
 const StyledLink = styled.a`
   display: flex;
   align-items: center;
-  color: ${black};
-  text-decoration: none;
   &:hover {
     text-decoration: underline;
   }

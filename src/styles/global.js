@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components"
 import { fontFiles } from "./fonts"
+import { black } from "./colors"
 
 export const GlobalStyle = createGlobalStyle`
 @font-face {
@@ -47,6 +48,7 @@ body {
 	line-height: 1;
   font-family: "Circular Std", "Helvetica";
 	font-size: 1.6rem; /* resets default font-size to 16px (and scales what user defines in browser settings) */
+	color: ${black}
 }
 ol, ul {
 	list-style: none;
@@ -62,5 +64,9 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+a {
+	color: inherit;
+	text-decoration: none;
 }
 `
