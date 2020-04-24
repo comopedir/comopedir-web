@@ -1,4 +1,5 @@
 export const black = "#222222"
+export const black25 = "rgba(34,34,34,0.25)"
 export const gray = "#999999"
 export const grayLight = "#EBEBEB"
 export const white = "#FFFFFF"
