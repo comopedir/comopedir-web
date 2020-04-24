@@ -47,8 +47,8 @@ const StyledContainer = styled.div`
   justify-content: space-between;
 `
 
-const Header = ({ heading = "Como pedir" }) => (
-  <StyledContainer>
+const Header = ({ className, heading = "Como pedir" }) => (
+  <StyledContainer className={className}>
     <StyledTitle size={sizes.large} tag="h1">
       {heading}
     </StyledTitle>
