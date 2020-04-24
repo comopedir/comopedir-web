@@ -37,14 +37,20 @@ const StyledImage = styled.img`
   object-position: center;
 `
 
-const ListingItem = ({ url, image, name, category }) => (
-  <Link to={url}>
+const StyledLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`
+
+const ListingItem = ({ url, image, name, category, className }) => (
+  <StyledLink to={url} className={className}>
     <StyledImageContainer>
       <StyledImage src={image} />
     </StyledImageContainer>
     <StyledName size={sizes.medium}>{name}</StyledName>
     <StyledCategory size={sizes.medium}>{category}</StyledCategory>
-  </Link>
+  </StyledLink>
 )
 
 export default ListingItem
