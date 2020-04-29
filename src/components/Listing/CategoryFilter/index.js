@@ -5,19 +5,18 @@ import Text, { sizes } from "../../Text"
 import Select from "../../Select"
 
 const StyledIcon = styled.img`
-  margin-left: 1rem;
-  width: 1rem;
-  height: 1rem;
+  margin-left: 0.5rem;
+  width: 0.6rem;
+  height: 0.6rem;
 `
 
-const LocationFilter = ({ options = [], onChange = () => {}, selected }) => (
+const CategoryFilter = ({ options = [], onChange = () => {}, selected }) => (
   <Select
-    hasBorderBottom
     selected={selected}
     onChange={onChange}
     renderButtonContent={() => (
       <>
-        <Text size={sizes.large}>{selected}</Text>
+        <Text size={sizes.medium}>{selected || "Filtrar"}</Text>
         <StyledIcon src={chevron} />
       </>
     )}
@@ -30,4 +29,4 @@ const LocationFilter = ({ options = [], onChange = () => {}, selected }) => (
   </Select>
 )
 
-export default LocationFilter
+export default CategoryFilter

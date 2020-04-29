@@ -16,7 +16,8 @@ const StyledButton = styled.button`
   display: flex;
   width: 100%;
   align-items: center;
-  border-bottom: 1px solid ${black};
+  border-bottom: ${({ hasBorderBottom }) =>
+    hasBorderBottom ? "1px solid ${black}" : null};
   padding: 0;
 `
 
@@ -34,9 +35,12 @@ const Select = ({
   onChange = () => {},
   renderButtonContent = () => null,
   selected,
+  hasBorderBottom = false,
 }) => (
   <StyledContainer>
-    <StyledButton>{renderButtonContent()}</StyledButton>
+    <StyledButton hasBorderBottom={hasBorderBottom}>
+      {renderButtonContent()}
+    </StyledButton>
     <StyledSelect value={selected} onChange={onChange}>
       {children}
     </StyledSelect>
