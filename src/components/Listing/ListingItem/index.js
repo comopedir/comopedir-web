@@ -18,21 +18,34 @@ const StyledCategory = styled(Text)`
 `
 
 const StyledImageContainer = styled.div`
-  width: 29rem;
-  height: 36rem;
   position: relative;
   overflow: hidden;
   display: inline-flex;
+  width: 100%;
+  height: 100%;
 
-  ${mediaQuery[breakpoints.small]} {
-    width: 15.6rem;
-    height: 20rem;
+  &::after {
+    display: block;
+    padding-top: calc(156 / 200 * 100%);
+    content: "";
+
+    ${mediaQuery[breakpoints.large]} {
+      padding-top: 124%;
+    }
   }
+`
+
+const StyledBoxRatioContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 `
 
 const StyledImage = styled.img`
   width: 100%;
-  max-width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
 `
@@ -41,12 +54,15 @@ const StyledLink = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  flex-grow: 1;
 `
 
 const ListingItem = ({ url, image, name, category, className }) => (
   <StyledLink to={url} className={className}>
     <StyledImageContainer>
-      <StyledImage src={image} />
+      <StyledBoxRatioContainer>
+        <StyledImage src={image} />
+      </StyledBoxRatioContainer>
     </StyledImageContainer>
     <StyledName size={sizes.medium}>{name}</StyledName>
     <StyledCategory size={sizes.medium}>{category}</StyledCategory>

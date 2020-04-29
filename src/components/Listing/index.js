@@ -5,23 +5,26 @@ import ListingItem from "./ListingItem"
 import { mediaQuery, breakpoints } from "../../styles/breakpoints"
 
 const StyledItemContainer = styled.div`
-  width: calc((100% - (2.8rem * 3)) / 4);
   display: flex;
   align-items: flex-start;
 
-  &:nth-child(n + 5) {
-    margin-top: 5.6rem;
-  }
-
   ${mediaQuery[breakpoints.small]} {
-    width: calc((100% - 1.6rem) / 2);
+    grid-column-end: span 1;
   }
 `
 
 const StyledContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1.6rem;
+  grid-row-gap: 2.9rem;
+  height: 100%;
+
+  ${mediaQuery[breakpoints.large]} {
+    grid-gap: 2.8rem;
+    grid-template-columns: repeat(auto-fill, minmax(29rem, 1fr));
+    grid-row-gap: 5.6rem;
+  }
 `
 
 const Listing = ({ items = [] }) => (
