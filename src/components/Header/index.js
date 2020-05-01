@@ -8,6 +8,11 @@ import { black } from "../../styles/colors"
 
 const StyledTitle = styled(Text)`
   white-space: pre-line;
+  width: 100%;
+
+  ${mediaQuery[breakpoints.large]} {
+    width: 25%;
+  }
 `
 
 const StyledFormLinkText = styled(Text)`

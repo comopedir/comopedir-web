@@ -37,6 +37,17 @@ query {
             city
             state
           }
+					categories {
+            slug
+          }
+          pictures {
+            small {
+              url
+            }
+            large {
+              url
+            }
+          }
         }
       }
     }
