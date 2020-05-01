@@ -1,4 +1,6 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
+import { navigate } from "gatsby"
+import { pageNameByLocation } from "../../../node-src/helpers"
 import styled from "styled-components"
 import Layout from "../../components/Layout"
 import Header from "../../components/Header"
@@ -48,6 +50,20 @@ const Listing = ({ pageContext = {} }) => {
     businesses,
   } = pageContext
   const [state, setState] = useState(selectedState)
+  const [city, setCity] = useState(selectedCity)
+
+  useEffect(() => {
+    if (city !== selectedCity || state !== selectedState) {
+      navigate(
+        pageNameByLocation(
+          state,
+          locations[state].findIndex(c => c === city) === -1
+            ? locations[state][0]
+            : city
+        )
+      )
+    }
+  }, [city, state])
 
   return (
     <Layout heading="Como pedir de todos os lugares que você gosta e quer ajudar.">
@@ -55,10 +71,17 @@ const Listing = ({ pageContext = {} }) => {
         <StyledLocationFilters>
           <LocationFilter
             options={locations[state]}
-            selected={locations[state][0]}
+            selected={city}
+            onChange={e => {
+              setCity(e.target.value)
+            }}
           />
           <StyledStateFilter>
-            <LocationFilter options={Object.keys(locations)} selected={state} />
+            <LocationFilter
+              options={Object.keys(locations)}
+              selected={state}
+              onChange={e => setState(e.target.value)}
+            />
           </StyledStateFilter>
         </StyledLocationFilters>
       )}

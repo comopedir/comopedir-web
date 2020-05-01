@@ -144,5 +144,7 @@ const getListingPageParams = ({
     businesses: businesses.map(i => i.node),
     locations,
     categories,
+    selectedCity: city,
+    selectedState: state,
   },
 })
