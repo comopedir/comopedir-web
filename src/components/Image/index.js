@@ -6,11 +6,10 @@ const StyledImageContainer = styled.div`
   position: relative;
   overflow: hidden;
   display: inline-flex;
-  width: 100%;
-  height: 100%;
 
   &::after {
     display: block;
+    width: 100%;
     padding-top: ${({ aspectRatio }) => aspectRatio.small};
     content: "";
 
