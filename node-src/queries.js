@@ -7,6 +7,17 @@ edges {
       city
       state
     }
+    categories {
+      slug
+    }
+    pictures {
+      small {
+        url
+      }
+      large {
+        url
+      }
+    }
   }
 }
 `
@@ -29,27 +40,7 @@ const businessesQuery = `
 query {
   comopedir {
     businesses {
-      edges {
-        node {
-          name
-          slug
-          addresses {
-            city
-            state
-          }
-					categories {
-            slug
-          }
-          pictures {
-            small {
-              url
-            }
-            large {
-              url
-            }
-          }
-        }
-      }
+      ${homeQueryFields}
     }
   }
 }
