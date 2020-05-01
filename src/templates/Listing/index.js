@@ -3,7 +3,6 @@ import { navigate } from "gatsby"
 import { pageNameByLocation } from "../../../node-src/helpers"
 import styled from "styled-components"
 import Layout from "../../components/Layout"
-import Header from "../../components/Header"
 import LocationFilter from "../../components/Listing/LocationFilter"
 import CategoryFilter from "../../components/Listing/CategoryFilter"
 import ListingGrid from "../../components/Listing/index"
@@ -63,7 +62,7 @@ const Listing = ({ pageContext = {} }) => {
         )
       )
     }
-  }, [city, state])
+  }, [city, state, locations, selectedCity, selectedState])
 
   return (
     <Layout heading="Como pedir de todos os lugares que você gosta e quer ajudar.">

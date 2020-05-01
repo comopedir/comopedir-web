@@ -4,7 +4,6 @@ import styled from "styled-components"
 import Text, { sizes } from "../Text"
 import { mediaQuery, breakpoints } from "../../styles/breakpoints"
 import sumIcon from "../../assets/icons/sum.svg"
-import { black } from "../../styles/colors"
 
 const StyledTitle = styled(Text)`
   white-space: pre-line;

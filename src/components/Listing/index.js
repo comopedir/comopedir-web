@@ -30,7 +30,7 @@ const StyledContainer = styled.div`
 const Listing = ({ items = [] }) => (
   <StyledContainer>
     {items.map(item => (
-      <StyledItemContainer>
+      <StyledItemContainer key={item.slug}>
         <ListingItem {...item} />
       </StyledItemContainer>
     ))}
