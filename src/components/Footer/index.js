@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 import Header from "../Header"
 import Text, { sizes } from "../Text"
-import { black25, gray, black } from "../../styles/colors"
+import { black25, gray } from "../../styles/colors"
 import { mediaQuery, breakpoints } from "../../styles/breakpoints"
 
 const defaultLinks = [
@@ -61,7 +61,7 @@ const Footer = ({ links = defaultLinks }) => {
       <StyledTopContainer>
         <ul>
           {links.map(link => (
-            <StyledItem key={link.url}>
+            <StyledItem key={link.label}>
               <StyledLink href={link.url}>
                 <Text size={sizes.medium}>{link.label}</Text>
               </StyledLink>

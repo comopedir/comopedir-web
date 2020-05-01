@@ -57,15 +57,17 @@ const StyledLink = styled(Link)`
   flex-grow: 1;
 `
 
-const ListingItem = ({ url, image, name, category, className }) => (
-  <StyledLink to={url} className={className}>
+const ListingItem = ({ slug, pictures, name, categories, className }) => (
+  <StyledLink to={`/${slug}`} className={className}>
     <StyledImageContainer>
       <StyledBoxRatioContainer>
-        <StyledImage src={image} />
+        {pictures && pictures[0] && <StyledImage src={pictures[0].small.url} />}
       </StyledBoxRatioContainer>
     </StyledImageContainer>
     <StyledName size={sizes.medium}>{name}</StyledName>
-    <StyledCategory size={sizes.medium}>{category}</StyledCategory>
+    {categories && categories[0] && (
+      <StyledCategory size={sizes.medium}>{categories[0].slug}</StyledCategory>
+    )}
   </StyledLink>
 )
 

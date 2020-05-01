@@ -74,10 +74,12 @@ exports.createPages = async ({ graphql, actions }) => {
                   result.data.comopedir.businesses.edges) ||
                 []
               return createPage(
-                getHomePageParams({
+                getListingPageParams({
                   state,
                   city,
-                  businessesFiltered,
+                  businesses: businessesFiltered,
+                  locations,
+                  categories,
                 })
               )
             }),
@@ -96,11 +98,13 @@ exports.createPages = async ({ graphql, actions }) => {
                     result.data.comopedir.businesses.edges) ||
                   []
                 return createPage(
-                  getHomePageParams({
+                  getListingPageParams({
                     state,
                     city,
                     category,
-                    businessesFiltered,
+                    businesses: businessesFiltered,
+                    locations,
+                    categories,
                   })
                 )
               })
@@ -111,14 +115,36 @@ exports.createPages = async ({ graphql, actions }) => {
     )
   )
 
-  return businessFilteredPromise
+  return Promise.all([
+    businessFilteredPromise,
+    createPage({
+      path: "/",
+      component: path.resolve("./src/templates/Listing/index.js"),
+      context: {
+        businesses: businesses.map(i => i.node),
+        locations,
+        categories,
+      },
+    }),
+  ])
 }
 
 // Generate page params for createPage for HomePage
-const getHomePageParams = ({ state, city, category = "", data }) => ({
+const getListingPageParams = ({
+  state,
+  city,
+  category = "",
+  businesses,
+  locations,
+  categories,
+}) => ({
   path: `${pageNameByLocation(state, city)}/${category}`,
-  component: path.resolve("./src/templates/Restaurant/index.js"),
+  component: path.resolve("./src/templates/Listing/index.js"),
   context: {
-    data,
+    businesses: businesses.map(i => i.node),
+    locations,
+    categories,
+    selectedCity: city,
+    selectedState: state,
   },
 })

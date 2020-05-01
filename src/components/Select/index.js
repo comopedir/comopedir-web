@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import chevron from "../../assets/icons/chevron.svg"
 import { black } from "../../styles/colors"
 
 const StyledContainer = styled.div`
@@ -17,7 +16,7 @@ const StyledButton = styled.button`
   width: 100%;
   align-items: center;
   border-bottom: ${({ hasBorderBottom }) =>
-    hasBorderBottom ? "1px solid ${black}" : null};
+    hasBorderBottom ? `1px solid ${black}` : null};
   padding: 0;
 `
 

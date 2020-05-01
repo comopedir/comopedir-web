@@ -20,6 +20,9 @@ const getStyledTag = tag => styled[tag]`
       case sizes.large: {
         return "2.4rem"
       }
+      default: {
+        return null
+      }
     }
   }};
   ${mediaQuery[breakpoints.large]} {
@@ -33,6 +36,9 @@ const getStyledTag = tag => styled[tag]`
         }
         case sizes.large: {
           return "3.2rem"
+        }
+        default: {
+          return null
         }
       }
     }};
