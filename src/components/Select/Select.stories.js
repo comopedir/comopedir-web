@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import Select from "."
 
 export default {
-  title: "Shared Components /Select",
+  title: "Shared Components/Select",
 }
 
 export const standard = () => {

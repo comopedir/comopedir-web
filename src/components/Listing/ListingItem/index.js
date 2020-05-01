@@ -4,6 +4,7 @@ import { Link } from "gatsby"
 import Text, { sizes } from "../../Text"
 import { gray } from "../../../styles/colors"
 import { mediaQuery, breakpoints } from "../../../styles/breakpoints"
+import Image from "../../Image"
 
 const StyledName = styled(Text)`
   margin-top: 1rem;
@@ -59,11 +60,12 @@ const StyledLink = styled(Link)`
 
 const ListingItem = ({ slug, pictures, name, categories, className }) => (
   <StyledLink to={`/${slug}`} className={className}>
-    <StyledImageContainer>
-      <StyledBoxRatioContainer>
-        {pictures && pictures[0] && <StyledImage src={pictures[0].small.url} />}
-      </StyledBoxRatioContainer>
-    </StyledImageContainer>
+    {pictures && pictures[0] && (
+      <Image
+        src={pictures[0].small.url}
+        aspectRatio={{ small: "78%", large: "124%" }}
+      />
+    )}
     <StyledName size={sizes.medium}>{name}</StyledName>
     {categories && categories[0] && (
       <StyledCategory size={sizes.medium}>{categories[0].slug}</StyledCategory>
