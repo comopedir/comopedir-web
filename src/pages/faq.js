@@ -18,7 +18,7 @@ const FAQ = () => (
   <Layout background={black} heading="Como?">
     <StyledContainer>
       <FAQItem question="Como posso incluir o meu estabelecimento?">
-        Fácil, clique em <a href="/">‘Cadastrar‘</a>
+        Fácil, clique em ‘<a href="/">Cadastrar</a>’.
       </FAQItem>
       <FAQItem question="Qual o preço para fazer parte?">
         É completamente de graça.
