@@ -25,7 +25,7 @@ export default ({ children, heading, background }) => (
   <React.Fragment>
     <GlobalStyle background={background} />
     <StyledContainer>
-      <Header heading={heading} />
+      <Header background={background} heading={heading} />
       {children}
       <Footer />
     </StyledContainer>

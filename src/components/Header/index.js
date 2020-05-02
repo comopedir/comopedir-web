@@ -4,6 +4,8 @@ import styled from "styled-components"
 import Text, { sizes } from "../Text"
 import { mediaQuery, breakpoints } from "../../styles/breakpoints"
 import sumIcon from "../../assets/icons/sum.svg"
+import whiteSumIcon from "../../assets/icons/whiteSum.svg"
+import { black } from "../../styles/colors"
 
 const StyledTitle = styled(Text)`
   white-space: pre-line;
@@ -48,7 +50,7 @@ const StyledContainer = styled.div`
   justify-content: space-between;
 `
 
-const Header = ({ className, heading = "Como pedir" }) => (
+const Header = ({ background, className, heading = "Como pedir" }) => (
   <StyledContainer className={className}>
     <StyledTitle size={sizes.large} tag="h1">
       {heading}
@@ -57,7 +59,10 @@ const Header = ({ className, heading = "Como pedir" }) => (
       <StyledFormLinkText size={sizes.medium} tag="p">
         Crie sua página
       </StyledFormLinkText>
-      <StyledIcon alt="Ícone de mais" src={sumIcon} />
+      <StyledIcon
+        alt="Ícone de mais"
+        src={background === black ? whiteSumIcon : sumIcon}
+      />
     </StyledLink>
   </StyledContainer>
 )
