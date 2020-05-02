@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useMemo } from "react"
 import { navigate } from "gatsby"
 import { pageNameByLocation } from "../../../node-src/helpers"
 import styled from "styled-components"
@@ -7,6 +7,7 @@ import LocationFilter from "../../components/Listing/LocationFilter"
 import CategoryFilter from "../../components/Listing/CategoryFilter"
 import ListingGrid from "../../components/Listing/index"
 import { mediaQuery, breakpoints } from "../../styles/breakpoints"
+import Text, { sizes } from "../../components/Text"
 
 const StyledStateFilter = styled.div`
   margin-left: 2rem;
@@ -39,6 +40,22 @@ const StyledListingGrid = styled.div`
   }
 `
 
+const StyledNewestTitle = styled(Text)`
+  margin-bottom: 1.4rem;
+
+  ${mediaQuery[breakpoints.large]} {
+    margin-bottom: 2.2rem;
+  }
+`
+
+const StyledNewestListing = styled.div`
+  margin-top: 5rem;
+
+  ${mediaQuery[breakpoints.large]} {
+    margin-bottom: 6rem;
+  }
+`
+
 const Listing = ({ pageContext = {} }) => {
   const {
     locations,
@@ -64,6 +81,17 @@ const Listing = ({ pageContext = {} }) => {
     }
   }, [city, state, locations, selectedCity, selectedState])
 
+  const newest = useMemo(
+    () =>
+      businesses
+        .sort(
+          (a, b) =>
+            new Date(b.createdAt).valueOf() - new Date(a.createdAt).valueOf()
+        )
+        .slice(0, 4),
+    [businesses]
+  )
+
   return (
     <Layout heading="Como pedir de todos os lugares que você gosta e quer ajudar.">
       {locations && (
@@ -83,6 +111,14 @@ const Listing = ({ pageContext = {} }) => {
             />
           </StyledStateFilter>
         </StyledLocationFilters>
+      )}
+      {newest && newest.length && (
+        <StyledNewestListing>
+          <StyledNewestTitle size={sizes.medium}>
+            Últimas Novidades
+          </StyledNewestTitle>
+          <ListingGrid items={newest} />
+        </StyledNewestListing>
       )}
       {categories && (
         <StyledCategoryFilter>
