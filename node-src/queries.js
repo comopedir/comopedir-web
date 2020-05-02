@@ -18,6 +18,13 @@ edges {
         url
       }
     }
+    channels {
+      value
+      channel {
+        name
+        slug
+      }
+    }
   }
 }
 `
@@ -41,8 +48,8 @@ query {
   comopedir {
     businesses {
       ${homeQueryFields}
+      }
     }
-  }
 }
 `
 
