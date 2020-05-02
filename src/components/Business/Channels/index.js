@@ -52,7 +52,7 @@ const Channels = ({ className, channels }) => (
                 break
               case "instagram":
                 to = c.value.replace(
-                  /(\@)|((\w*\.*)?inst(r)?ag(r)?am.com(.br)?\/?)/,
+                  /(@)|((\w*\.*)?inst(r)?ag(r)?am.com(.br)?\/?)/,
                   "https://www.instagram.com/"
                 )
                 label = c.value

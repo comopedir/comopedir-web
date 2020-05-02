@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { mediaQuery, breakpoints } from "../../../../styles/breakpoints"
 import Text, { sizes } from "../../../Text"
 import { grayLight, gray } from "../../../../styles/colors"
-import { Link } from "gatsby"
 
 const StyledLink = styled.a`
   border-top: 1px solid ${grayLight};
