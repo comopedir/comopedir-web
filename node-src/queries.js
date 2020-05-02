@@ -37,6 +37,7 @@ query {
       edges {
         node {
           slug
+          id
         }
       }
     }

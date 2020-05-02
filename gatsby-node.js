@@ -29,9 +29,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Get all categories
   const categoriesPromise = graphql(categoryQuery).then(result =>
-    (result.data.comopedir.categories.edges || []).map(
-      ({ node = {} }) => node.slug
-    )
+    (result.data.comopedir.categories.edges || []).map(({ node }) => node)
   )
 
   const [businesses, categories] = await Promise.all([
@@ -83,31 +81,33 @@ exports.createPages = async ({ graphql, actions }) => {
                 })
               )
             }),
-            categories.map(category =>
-              graphql(`
+            Promise.all(
+              categories.map(category =>
+                graphql(`
         query {
           comopedir {
-            businesses(city: "${city}", state: "${state}", category: "${category}") {
+            businesses(city: "${city}", state: "${state}", category: "${category.id}") {
               ${homeQueryFields}
             }
           }
         }
       `).then(result => {
-                const businessesFiltered =
-                  (result.data.comopedir.businesses &&
-                    result.data.comopedir.businesses.edges) ||
-                  []
-                return createPage(
-                  getListingPageParams({
-                    state,
-                    city,
-                    category,
-                    businesses: businessesFiltered,
-                    locations,
-                    categories,
-                  })
-                )
-              })
+                  const businessesFiltered =
+                    (result.data.comopedir.businesses &&
+                      result.data.comopedir.businesses.edges) ||
+                    []
+                  return createPage(
+                    getListingPageParams({
+                      state,
+                      city,
+                      category: category.slug,
+                      businesses: businessesFiltered,
+                      locations,
+                      categories,
+                    })
+                  )
+                })
+              )
             ),
           ])
         )
@@ -123,7 +123,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         businesses: businesses.map(i => i.node),
         locations,
-        categories,
+        categories: categories.map(i => i.slug),
       },
     }),
   ])
@@ -143,7 +143,7 @@ const getListingPageParams = ({
   context: {
     businesses: businesses.map(i => i.node),
     locations,
-    categories,
+    categories: categories.map(i => i.slug),
     selectedCity: city,
     selectedState: state,
     selectedCategory: category,
