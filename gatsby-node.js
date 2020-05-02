@@ -146,5 +146,6 @@ const getListingPageParams = ({
     categories,
     selectedCity: city,
     selectedState: state,
+    selectedCategory: category,
   },
 })

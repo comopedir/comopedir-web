@@ -14,7 +14,6 @@ const StyledContainer = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 
   ${mediaQuery[breakpoints.large]} {
     margin: 9.3rem ${layoutHorizontalMarginLarge} 14.9rem;

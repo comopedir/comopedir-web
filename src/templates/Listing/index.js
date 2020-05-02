@@ -23,10 +23,10 @@ const StyledLocationFilters = styled.div`
 `
 
 const StyledCategoryFilter = styled.div`
-  margin-top: 8.1rem;
+  margin-top: ${({ hasNewest }) => (hasNewest ? "8.1rem" : "2rem")};
 
   ${mediaQuery[breakpoints.large]} {
-    margin-top: 11.8rem;
+    margin-top: ${({ hasNewest }) => (hasNewest ? "11.8rem" : "3rem")};
   }
 `
 
@@ -56,6 +56,17 @@ const StyledNewestListing = styled.div`
   }
 `
 
+const StyledNoResults = styled.div`
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  ${mediaQuery[breakpoints.large]} {
+    justify-content: flex-start;
+  }
+`
+
 const Listing = ({ pageContext = {} }) => {
   const {
     locations,
@@ -67,19 +78,37 @@ const Listing = ({ pageContext = {} }) => {
   } = pageContext
   const [state, setState] = useState(selectedState)
   const [city, setCity] = useState(selectedCity)
+  const [category, setCategory] = useState(selectedCategory)
 
   useEffect(() => {
-    if (city !== selectedCity || state !== selectedState) {
+    if (
+      city !== selectedCity ||
+      state !== selectedState ||
+      category !== selectedCategory
+    ) {
       navigate(
-        pageNameByLocation(
-          state,
-          locations[state].findIndex(c => c === city) === -1
-            ? locations[state][0]
-            : city
-        )
+        [
+          pageNameByLocation(
+            state,
+            locations[state].findIndex(c => c === city) === -1
+              ? locations[state][0]
+              : city
+          ),
+          category,
+        ]
+          .filter(Boolean)
+          .join("/")
       )
     }
-  }, [city, state, locations, selectedCity, selectedState])
+  }, [
+    city,
+    state,
+    locations,
+    selectedCity,
+    selectedState,
+    category,
+    selectedCategory,
+  ])
 
   const newest = useMemo(
     () =>
@@ -91,6 +120,11 @@ const Listing = ({ pageContext = {} }) => {
         .slice(0, 4),
     [businesses]
   )
+
+  const hasNewest = useMemo(() => newest && newest.length, [newest])
+  const hasBusinesses = useMemo(() => businesses && businesses.length, [
+    businesses,
+  ])
 
   return (
     <Layout heading="Como pedir de todos os lugares que você gosta e quer ajudar.">
@@ -112,26 +146,31 @@ const Listing = ({ pageContext = {} }) => {
           </StyledStateFilter>
         </StyledLocationFilters>
       )}
-      {newest && newest.length && (
+      {hasNewest ? (
         <StyledNewestListing>
           <StyledNewestTitle size={sizes.medium}>
             Últimas Novidades
           </StyledNewestTitle>
           <ListingGrid items={newest} />
         </StyledNewestListing>
-      )}
+      ) : null}
       {categories && (
-        <StyledCategoryFilter>
+        <StyledCategoryFilter hasNewest={hasNewest}>
           <CategoryFilter
             options={categories}
             selected={selectedCategory || "Filtrar"}
+            onChange={e => setCategory(e.target.value)}
           />
         </StyledCategoryFilter>
       )}
-      {businesses && (
+      {hasBusinesses ? (
         <StyledListingGrid>
           <ListingGrid items={businesses} />
         </StyledListingGrid>
+      ) : (
+        <StyledNoResults>
+          <Text size={sizes.large}>Não encontramos resultados</Text>
+        </StyledNoResults>
       )}
     </Layout>
   )
