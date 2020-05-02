@@ -6,6 +6,7 @@ import { mediaQuery, breakpoints } from "../../styles/breakpoints"
 import sumIcon from "../../assets/icons/sum.svg"
 import whiteSumIcon from "../../assets/icons/whiteSum.svg"
 import { black } from "../../styles/colors"
+import { signup } from "../../constants/urls"
 
 const StyledTitle = styled(Text)`
   white-space: pre-line;
@@ -55,7 +56,7 @@ const Header = ({ background, className, heading = "Como pedir" }) => (
     <StyledTitle size={sizes.large} tag="h1">
       {heading}
     </StyledTitle>
-    <StyledLink href="/">
+    <StyledLink href={signup}>
       <StyledFormLinkText size={sizes.medium} tag="p">
         Crie sua página
       </StyledFormLinkText>
