@@ -21,9 +21,9 @@ const StyledContainer = styled.div`
   }
 `
 
-export default ({ children, heading }) => (
+export default ({ children, heading, background }) => (
   <React.Fragment>
-    <GlobalStyle />
+    <GlobalStyle background={background} />
     <StyledContainer>
       <Header heading={heading} />
       {children}

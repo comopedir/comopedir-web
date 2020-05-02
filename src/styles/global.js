@@ -48,7 +48,8 @@ body {
 	line-height: 1;
   font-family: "Circular Std", "Helvetica";
 	font-size: 1.6rem; /* resets default font-size to 16px (and scales what user defines in browser settings) */
-	color: ${black}
+	color: ${({ background }) => (background === black ? "#FFF" : black)};
+	background: ${({ background }) => background};
 }
 ol, ul {
 	list-style: none;
