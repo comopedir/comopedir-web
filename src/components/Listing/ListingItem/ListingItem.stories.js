@@ -6,10 +6,12 @@ export default {
 }
 
 export const standard = () => (
-  <ListingItem
-    url="/"
-    name="Tan Tan To Go"
-    category="Asiático"
-    image="https://via.placeholder.com/720x580"
-  />
+  <div style={{ height: 200, width: 300 }}>
+    <ListingItem
+      url="/"
+      name="Tan Tan To Go"
+      categories={[{ slug: "Asiático" }]}
+      pictures={[{ small: { url: "https://via.placeholder.com/720x580" } }]}
+    />
+  </div>
 )

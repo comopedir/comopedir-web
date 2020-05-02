@@ -9,32 +9,62 @@ const items = [
   {
     url: "/",
     name: "Tan Tan To Go",
-    category: "Asiático",
-    image: "https://via.placeholder.com/720x580",
+    categories: [{ slug: "Asiático" }],
+    pictures: [
+      {
+        small: {
+          url: "https://via.placeholder.com/720x580",
+        },
+      },
+    ],
   },
   {
     url: "/",
     name: "Tan Tan To Go",
-    category: "Asiático",
-    image: "https://via.placeholder.com/720x580",
+    categories: [{ slug: "Asiático" }],
+    pictures: [
+      {
+        small: {
+          url: "https://via.placeholder.com/720x580",
+        },
+      },
+    ],
   },
   {
     url: "/",
     name: "Tan Tan To Go",
-    category: "Asiático",
-    image: "https://via.placeholder.com/720x580",
+    categories: [{ slug: "Asiático" }],
+    pictures: [
+      {
+        small: {
+          url: "https://via.placeholder.com/720x580",
+        },
+      },
+    ],
   },
   {
     url: "/",
     name: "Tan Tan To Go",
-    category: "Asiático",
-    image: "https://via.placeholder.com/720x580",
+    categories: [{ slug: "Asiático" }],
+    pictures: [
+      {
+        small: {
+          url: "https://via.placeholder.com/720x580",
+        },
+      },
+    ],
   },
   {
     url: "/",
     name: "Tan Tan To Go",
-    category: "Asiático",
-    image: "https://via.placeholder.com/720x580",
+    categories: [{ slug: "Asiático" }],
+    pictures: [
+      {
+        small: {
+          url: "https://via.placeholder.com/720x580",
+        },
+      },
+    ],
   },
 ]
 
