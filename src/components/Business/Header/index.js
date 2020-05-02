@@ -29,8 +29,8 @@ const Category = styled(Text)`
   color: ${gray};
 `
 
-const BusinessHeader = ({ title, image, category }) => (
-  <div>
+const BusinessHeader = ({ title, image, category, className }) => (
+  <div className={className}>
     <Image src={image.url} />
     <Title size={sizes.large} tag="h1">
       {title}

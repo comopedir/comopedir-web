@@ -6,6 +6,6 @@ export const breakpoints = {
 }
 
 export const mediaQuery = {
-  [breakpoints.small]: `@media (max-width: ${breakpointLarge}px)`,
+  [breakpoints.small]: `@media (max-width: ${breakpointLarge - 1}px)`,
   [breakpoints.large]: `@media (min-width: ${breakpointLarge}px)`,
 }

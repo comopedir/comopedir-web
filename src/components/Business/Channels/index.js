@@ -27,8 +27,8 @@ const StyledChannelItem = styled(ChannelItem)`
   }
 `
 
-const Channels = ({ channels }) => (
-  <div>
+const Channels = ({ className, channels }) => (
+  <div className={className}>
     {channels
       ? channels
           .filter(c => c.value)

@@ -6,6 +6,7 @@ const StyledImageContainer = styled.div`
   position: relative;
   overflow: hidden;
   display: inline-flex;
+  width: 100%;
 
   &::after {
     display: block;
