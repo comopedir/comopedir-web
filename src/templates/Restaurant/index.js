@@ -4,10 +4,8 @@ import Layout from "../../components/Layout"
 import BusinessHeader from "../../components/Business/Header"
 import Channels from "../../components/Business/Channels"
 import Pictures from "../../components/Business/Pictures"
-import {
-  layoutHorizontalMarginSmall,
-  layoutHorizontalMarginLarge,
-} from "../../styles/variables"
+import Address from "../../components/Business/Address"
+import { layoutHorizontalMarginSmall } from "../../styles/variables"
 import { mediaQuery, breakpoints } from "../../styles/breakpoints"
 
 const StyledPictures = styled(Pictures)`
@@ -54,6 +52,10 @@ const StyledContainer = styled.div`
   }
 `
 
+const StyledAddress = styled(Address)`
+  margin-top: 1rem;
+`
+
 const RestaurantTemplate = ({ pageContext }) => {
   const { data } = pageContext
   return (
@@ -70,6 +72,9 @@ const RestaurantTemplate = ({ pageContext }) => {
               data.categories && data.categories[0] && data.categories[0].slug
             }
           />
+          {data.addresses && data.addresses[0] ? (
+            <StyledAddress address={data.addresses[0]} />
+          ) : null}
           <StyledChannelsDesktop channels={data.channels} />
         </div>
         <StyledPictures pictures={data.pictures} />
