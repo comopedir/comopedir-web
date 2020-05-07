@@ -7,9 +7,13 @@ import sumIcon from "../../assets/icons/sum.svg"
 import whiteSumIcon from "../../assets/icons/whiteSum.svg"
 import { black } from "../../styles/colors"
 import { signup } from "../../constants/urls"
+import { Link } from "gatsby"
 
 const StyledTitle = styled(Text)`
   white-space: pre-line;
+`
+
+const StyledLinkTitle = styled(Link)`
   width: 100%;
 
   ${mediaQuery[breakpoints.large]} {
@@ -53,9 +57,11 @@ const StyledContainer = styled.div`
 
 const Header = ({ background, className, heading = "Como pedir" }) => (
   <StyledContainer className={className}>
-    <StyledTitle size={sizes.large} tag="h1">
-      {heading}
-    </StyledTitle>
+    <StyledLinkTitle to="/">
+      <StyledTitle size={sizes.large} tag="h1">
+        {heading}
+      </StyledTitle>
+    </StyledLinkTitle>
     <StyledLink href={signup}>
       <StyledFormLinkText size={sizes.medium} tag="p">
         Crie sua página
