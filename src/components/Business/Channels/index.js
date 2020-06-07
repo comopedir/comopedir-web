@@ -32,6 +32,7 @@ const Channels = ({ className, channels }) => (
     {channels
       ? channels
           .filter(c => c.value)
+          .filter(c => c.channel.slug !== "email")
           .sort((a, b) => {
             if (order.indexOf(a.channel.slug) > order.indexOf(b.channel.slug)) {
               return 1
